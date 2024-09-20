@@ -9,7 +9,7 @@ export default function Labs() {
     <div>
         <h1>Jieyi Zhou</h1>
         <h1>Section 3 for CS 5610</h1>
-        <h1>Github link: https://github.com/JennyjieyiZ/kanbas-react-web-app-cs5610-fa24</h1>
+        <h1><a href="https://github.com/JennyjieyiZ/kanbas-react-web-app-cs5610-fa24">Github</a></h1>
         <h1>Labs</h1>
         <TOC />
       <Routes>
