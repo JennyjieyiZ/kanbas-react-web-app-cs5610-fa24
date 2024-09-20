@@ -135,7 +135,7 @@ export default function Lab1() {
           <tfoot>
             <tr>
               <td colSpan={3}>Average</td>
-              <td>90</td>
+              <td>94</td>
             </tr>
           </tfoot>
         </table>
