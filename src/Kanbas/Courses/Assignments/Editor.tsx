@@ -56,7 +56,7 @@ export default function AssignmentEditor() {
             <label htmlFor="wd-website-url	">Website URL</label><br/>
 
             <input type="checkbox" id="wd-media-recordings	"name="submission-options" value="wd-media-recordings" />
-            <label htmlFor="wd-media-recordings	">Media Recording</label><br/>
+            <label htmlFor="wd-media-recordings	">Media Recordings</label><br/>
 
             <input type="checkbox" id="wd-student-annotation	"name="submission-options" value="wd-student-annotation" />
             <label htmlFor="wd-student-annotation">Student Annotation</label><br/>
