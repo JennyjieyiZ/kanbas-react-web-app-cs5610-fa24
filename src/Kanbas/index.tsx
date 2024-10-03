@@ -1,5 +1,6 @@
 import { Routes, Route, Navigate } 
 from "react-router";
+import "./styles.css";
 import Account from "./Account";
 import Dashboard from "./Dashboard";
 import KanbasNavigation from "./Navigation";
@@ -8,10 +9,9 @@ import Courses from "./Courses";
 export default function Kanbas() {
     return (
       <div id="wd-kanbas">
-        <h1>Kanbas</h1>
    
             <KanbasNavigation />
-            <div>
+            <div className="wd-main-content-offset p-3">
         <Routes>
             <Route path="/" element={<Navigate to="Account" />} />
             <Route path="/Account/*" element={<Account />} />
