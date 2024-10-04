@@ -1,6 +1,5 @@
 import { FaPlus } from "react-icons/fa6";
 import GreenCheckmark from "./GreenCheckmark";
-import { MdDoNotDisturbAlt } from "react-icons/md";
 export default function ModulesControls() {
   return (
     <div id="wd-modules-controls" className="text-nowrap">
@@ -23,30 +22,28 @@ export default function ModulesControls() {
 
         <ul className="dropdown-menu">
           <li>
-            <a id="wd-publish-all-modules-and-items-btn" className="dropdown-item" href="#">
+            <a id="wd-publish-all-modules-and-items-btn" className="dropdown-item" href="#/Kanbas/Courses/1234/Modules">
               <GreenCheckmark />
               Publish all modules and items</a>
           </li>
           <li>
-            <a id="wd-publish-modules-only-button" className="dropdown-item" href="#">
+            <a id="wd-publish-modules-only-button" className="dropdown-item" href="#/Kanbas/Courses/1234/Modules">
               <GreenCheckmark />
               Publish modules only</a>
           </li>
 
           <li>
-            <a id="wd-unpublish-all-modules-and-items" className="dropdown-item" href="#">
+            <a id="wd-unpublish-all-modules-and-items" className="dropdown-item" href="#/Kanbas/Courses/1234/Modules">
               <GreenCheckmark />
               Unpublish all modules and items</a>
           </li>
 
           <li>
-            <a id="wd-unpublish-all-modules-and-items" className="dropdown-item" href="#">
+            <a id="wd-unpublish-all-modules-and-items" className="dropdown-item" href="#/Kanbas/Courses/1234/Modules">
               <GreenCheckmark />
               Unpublish modules only</a>
           </li>
-          {/* Create two more items with IDs wd-unpublish-all-modules-and-items and
-              wd-unpublish-modules-only with labels Unpublish all modules and items
-              and Unpublish modules only */}
+
         </ul>
 
         </div>
@@ -70,6 +67,6 @@ export default function ModulesControls() {
         
 
       </div>
-      {/* Implement the View Progress and Collapse All buttons with IDs wd-view-progress and wd-collapse-all */}
+
     </div>
 );}

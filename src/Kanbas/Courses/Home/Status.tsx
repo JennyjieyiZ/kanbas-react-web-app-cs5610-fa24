@@ -7,7 +7,7 @@ import { BsMegaphone } from "react-icons/bs";
 import { BiBarChart } from "react-icons/bi";
 import { BiLineChart } from "react-icons/bi";
 import { BiBell } from "react-icons/bi";
-{/* Find more icons */}
+
 export default function CourseStatus() {
   return (
     <div id="wd-course-status" style={{ width: "300px" }}>
@@ -46,7 +46,7 @@ export default function CourseStatus() {
 
         <button className="btn btn-lg btn-secondary w-100 mt-1 text-start">
         <BiBell className="me-2 fs-5" /> View Course Notifications </button>
-      {/* Complete the rest of the buttons */}
+
     </div>
 );}
 

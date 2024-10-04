@@ -25,7 +25,7 @@ export default function AssignmentEditor() {
         <div
           id="wd-description"
           style={{
-            width: "80ch",
+           
             whiteSpace: "pre-wrap",
             border: "1px solid #ccc",
             padding: "10px",
@@ -45,6 +45,7 @@ export default function AssignmentEditor() {
         </div>
         </div>
 
+          
       {/* Points, Assignment Group, Display Grade as */}
       <div className="mb-3">
         <div>
@@ -56,6 +57,9 @@ export default function AssignmentEditor() {
             value={100}
           />
         </div>
+
+
+
         <div>
           <label htmlFor="wd-group" className="form-label">Assignment Groups</label>
           <select className="form-control" id="wd-group">
