@@ -110,6 +110,10 @@ export default function AssignmentEditor() {
       </div>
 
       {/* Assign, Due Date, Available From, Available Until */}
+
+      <div >
+          <label htmlFor="wd-assign" className="form-label">Assign</label>
+          </div>
       <div className="mb-3 border p-3 rounded">
         <div >
           <label htmlFor="wd-assign-to" className="form-label"><b>Assign to</b></label>
@@ -123,7 +127,7 @@ export default function AssignmentEditor() {
         <div>
           <label htmlFor="wd-due-date" className="form-label"><b>Due</b></label>
           <input
-            type="date"
+            type="datetime-local"
             className="form-control"
             id="wd-due-date"
           />
@@ -133,7 +137,7 @@ export default function AssignmentEditor() {
         <div className="col-md-6">
           <label htmlFor="wd-available-from" className="form-label"><b>Available from</b></label>
           <input
-            type="date"
+            type="datetime-local"
             className="form-control"
             id="wd-available-from"
           />
@@ -141,7 +145,7 @@ export default function AssignmentEditor() {
         <div className="col-md-6">
           <label htmlFor="wd-available-until" className="form-label"><b>Available until</b></label>
           <input
-            type="date"
+            type="datetime-local"
             className="form-control"
             id="wd-available-until"
           />
