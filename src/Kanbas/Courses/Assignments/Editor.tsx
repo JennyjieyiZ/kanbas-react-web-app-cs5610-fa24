@@ -1,5 +1,6 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { MdArrowDropDown } from 'react-icons/md';
 export default function AssignmentEditor() {
   return (
     <div id="wd-assignments-editor" className="container mt-4">
@@ -20,7 +21,7 @@ export default function AssignmentEditor() {
       </div>
 
       {/* Description */}
-      <div className="mb-3">
+      <div className="mb-3 col-md-12">
         <label htmlFor="wd-description" className="form-label"></label>
         <div
           id="wd-description"
@@ -45,11 +46,12 @@ export default function AssignmentEditor() {
         </div>
         </div>
 
-          
       {/* Points, Assignment Group, Display Grade as */}
-      <div className="mb-3">
-        <div>
+      <div className="row mb-3">
+      <div className="col-md-4 mb-3">
           <label htmlFor="wd-points" className="form-label">Points</label>
+        </div>
+        <div className="col-md-8">
           <input
             type="number"
             id="wd-points"
@@ -60,31 +62,38 @@ export default function AssignmentEditor() {
 
 
 
-        <div>
+        <div className="col-md-4 mb-3">
           <label htmlFor="wd-group" className="form-label">Assignment Groups</label>
-          <select className="form-control" id="wd-group">
+          </div>
+          <div className="col-md-8 mb-3">
+          <select className="form-control col-md-6" id="wd-group">
             <option>ASSIGNMENTS</option>
           </select>
         </div>
-        <div>
+
+
+        <div className="col-md-4 mb-3">
           <label htmlFor="wd-display-grade-as" className="form-label">Display Grade as</label>
+        </div>
+        <div className="col-md-8 mb-3">
           <select className="form-control" id="wd-display-grade-as">
             <option>PERCENTAGE</option>
           </select>
         </div>
-      </div>
 
-      {/* Submission Type */}
-      <div className="mb-3">
-        <div >
+
+
+        {/* Submission Type */}
+        <div className="col-md-4 mb-3">
           <label htmlFor="wd-submission-type" className="form-label">Submission Type</label>
-          </div>
-          <div className=" border p-3 rounded">
+        </div>
+        <div className="col-md-8 mb-3">
+        <div className="row-mb-3 border p-3 rounded">
           <select className="form-control" id="wd-submission-type">
             <option>Online</option>
           </select>
         
-        <div>
+        
           <div>
             <label>Online Entry Options</label><br />
             <div className="form-check">
@@ -108,18 +117,21 @@ export default function AssignmentEditor() {
               <label htmlFor="wd-file-upload" className="form-check-label">File Upload</label>
               </div>
             </div>
-          </div>
+          
 
         </div>
-      </div>
+        
+        </div>
 
-      {/* Assign, Due Date, Available From, Available Until */}
+  {/* Assign, Due Date, Available From, Available Until */}
 
-      <div >
+        <div className="col-md-4 mb-3">
           <label htmlFor="wd-assign" className="form-label">Assign</label>
-          </div>
-      <div className="mb-3 border p-3 rounded">
-        <div >
+        </div>
+
+        <div className="col-md-8 mb-3">
+          <div className="row-mb-3 border p-3 rounded">
+          <div >
           <label htmlFor="wd-assign-to" className="form-label"><b>Assign to</b></label>
           <input
             type="text"
@@ -155,7 +167,22 @@ export default function AssignmentEditor() {
           />
           </div>
         </div>
+
+          </div>
+
+
+        </div>
+
+
       </div>
+
+
+      
+
+
+
+
+     
 
       {/* Buttons */}
       <div className="d-flex justify-content-end mt-3">
