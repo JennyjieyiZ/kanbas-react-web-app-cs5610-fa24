@@ -4,8 +4,7 @@ import { LiaBookSolid, LiaCogSolid } from "react-icons/lia";
 import { FaInbox, FaRegCircleUser } from "react-icons/fa6";
 import { Link, useLocation } from "react-router-dom";
 export default function KanbasNavigation() {
-  const location = useLocation();
-  // const isActive = (path) => location.pathname === path;
+
   return (
     <div id="wd-kanbas-navigation" style={{ width: 110 }} className="list-group rounded-0 position-fixed bottom-0 top-0 d-none d-md-block bg-black z-2">
   

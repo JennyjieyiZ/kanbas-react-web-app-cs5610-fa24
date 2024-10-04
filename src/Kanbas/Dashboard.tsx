@@ -12,7 +12,7 @@ export default function Dashboard() {
         <div className="card rounded-3 overflow-hidden">
           <Link className="wd-dashboard-course-link text-decoration-none text-dark"
                 to="/Kanbas/Courses/1234/Home">
-            <img src="/images/reactjs.jpg" width="100%" height={160}/>
+            <img src="/images/reactjs.jpg" alt="reactjs" width="100%" height={160}/>
             <div className="card-body">
               <h5 className="wd-dashboard-course-title card-title">
                  CS1234 React JS
@@ -31,7 +31,7 @@ export default function Dashboard() {
         <div className="card rounded-3 overflow-hidden">
           <Link className="wd-dashboard-course-link text-decoration-none text-dark"
                 to="/Kanbas/Courses/1234/Home">
-            <img src="/images/reactjs.jpg" width="100%" height={160}/>
+            <img src="/images/reactjs.jpg" alt="reactjs" width="100%" height={160}/>
             <div className="card-body">
               <h5 className="wd-dashboard-course-title card-title">
                  CS1234 React JS
@@ -49,7 +49,7 @@ export default function Dashboard() {
         <div className="card rounded-3 overflow-hidden">
           <Link className="wd-dashboard-course-link text-decoration-none text-dark"
                 to="/Kanbas/Courses/1234/Home">
-            <img src="/images/reactjs.jpg" width="100%" height={160}/>
+            <img src="/images/reactjs.jpg" alt="reactjs" width="100%" height={160}/>
             <div className="card-body">
               <h5 className="wd-dashboard-course-title card-title">
                  CS1234 React JS
@@ -67,7 +67,7 @@ export default function Dashboard() {
         <div className="card rounded-3 overflow-hidden">
           <Link className="wd-dashboard-course-link text-decoration-none text-dark"
                 to="/Kanbas/Courses/1234/Home">
-            <img src="/images/reactjs.jpg" width="100%" height={160}/>
+            <img src="/images/reactjs.jpg" alt="reactjs" width="100%" height={160}/>
             <div className="card-body">
               <h5 className="wd-dashboard-course-title card-title">
                  CS1234 React JS
@@ -85,7 +85,7 @@ export default function Dashboard() {
         <div className="card rounded-3 overflow-hidden">
           <Link className="wd-dashboard-course-link text-decoration-none text-dark"
                 to="/Kanbas/Courses/1234/Home">
-            <img src="/images/reactjs.jpg" width="100%" height={160}/>
+            <img src="/images/reactjs.jpg" alt="reactjs" width="100%" height={160}/>
             <div className="card-body">
               <h5 className="wd-dashboard-course-title card-title">
                  CS1234 React JS
@@ -103,7 +103,7 @@ export default function Dashboard() {
         <div className="card rounded-3 overflow-hidden">
           <Link className="wd-dashboard-course-link text-decoration-none text-dark"
                 to="/Kanbas/Courses/1234/Home">
-            <img src="/images/reactjs.jpg" width="100%" height={160}/>
+            <img src="/images/reactjs.jpg" alt="reactjs" width="100%" height={160}/>
             <div className="card-body">
               <h5 className="wd-dashboard-course-title card-title">
                  CS1234 React JS
@@ -121,7 +121,7 @@ export default function Dashboard() {
         <div className="card rounded-3 overflow-hidden">
           <Link className="wd-dashboard-course-link text-decoration-none text-dark"
                 to="/Kanbas/Courses/1234/Home">
-            <img src="/images/reactjs.jpg" width="100%" height={160}/>
+            <img src="/images/reactjs.jpg" alt="reactjs" width="100%" height={160}/>
             <div className="card-body">
               <h5 className="wd-dashboard-course-title card-title">
                  CS1234 React JS
@@ -139,7 +139,7 @@ export default function Dashboard() {
         <div className="card rounded-3 overflow-hidden">
           <Link className="wd-dashboard-course-link text-decoration-none text-dark"
                 to="/Kanbas/Courses/1234/Home">
-            <img src="/images/reactjs.jpg" width="100%" height={160}/>
+            <img src="/images/reactjs.jpg" alt="reactjs" width="100%" height={160}/>
             <div className="card-body">
               <h5 className="wd-dashboard-course-title card-title">
                  CS1234 React JS
