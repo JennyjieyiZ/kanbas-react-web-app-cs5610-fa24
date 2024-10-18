@@ -30,6 +30,8 @@ import Square from "./Square";
 import Highlight from "./Highlight";
 import AddPathParameters from "./AddPathParameters";
 import PathParameters from "./PathParameters";
+import FindIndex from "./FindIndex";
+
 
 export default function Lab3() {
   console.log('Hello World!');
@@ -53,6 +55,7 @@ export default function Lab3() {
       <ForLoops />
       <MapFunction />
       <FindFunction />
+      <FindIndex />
       <FilterFunction />
       <JsonStringify />
       <House />
@@ -71,7 +74,7 @@ export default function Lab3() {
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipitratione eaque illo minus cum, saepe totam
         vel nihil repellat nemo explicabo excepturi consectetur. Modi omnis minus sequi maiores, provident voluptates.
      </Highlight>
-      <AddPathParameters />
+  
       <PathParameters />
       
    
