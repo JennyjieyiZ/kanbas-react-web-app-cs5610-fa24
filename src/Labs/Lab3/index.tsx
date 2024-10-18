@@ -28,7 +28,6 @@ import Classes from "./Classes";
 import Add from "./Add";
 import Square from "./Square";
 import Highlight from "./Highlight";
-import AddPathParameters from "./AddPathParameters";
 import PathParameters from "./PathParameters";
 import FindIndex from "./FindIndex";
 
