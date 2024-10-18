@@ -1,12 +1,12 @@
 import { Link, useParams, useLocation } from "react-router-dom";
 export default function CoursesNavigation() {
-  const { courseId } = useParams(); // Get course ID from the URL
+  const { cid } = useParams(); // Get course ID from the URL
   const location = useLocation();   // Get current pathname
   const links = ["Home", "Modules", "Piazza", "Zoom", "Assignments", "Quizzes", "Grades", "People"];
   return (
     <div id="wd-courses-navigation" className="wd list-group fs-5 rounded-0">
       {links.map((link) => {
-        const linkPath = `/Kanbas/Courses/${courseId}/${link}`;
+        const linkPath = `/Kanbas/Courses/${cid}/${link}`;
         return (
           <Link
             key={link}
