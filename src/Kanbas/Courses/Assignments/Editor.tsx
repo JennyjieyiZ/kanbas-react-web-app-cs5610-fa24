@@ -47,6 +47,7 @@ export default function AssignmentEditor() {
         </div>
       </div>
 
+
       {/* Points */}
       <div className="row mb-3">
         <div className="col-md-4 mb-3">
@@ -61,42 +62,146 @@ export default function AssignmentEditor() {
             readOnly
           />
         </div>
-      </div>
+      
 
-      {/* Due Date */}
-      <div className="row mb-3">
-        <div className="col-md-6">
-          <label htmlFor="wd-due-date" className="form-label">Due Date</label>
+       {/* Assignment Group, Display Grade as */}
+
+       <div className="col-md-4 mb-3">
+          <label htmlFor="wd-group" className="form-label">Assignment Groups</label>
+          </div>
+          <div className="col-md-8 mb-3">
+          <select className="form-control col-md-6" id="wd-group">
+            <option>ASSIGNMENTS</option>
+          </select>
+        </div>
+
+
+        <div className="col-md-4 mb-3">
+          <label htmlFor="wd-display-grade-as" className="form-label">Display Grade as</label>
+        </div>
+        <div className="col-md-8 mb-3">
+          <select className="form-control" id="wd-display-grade-as">
+            <option>PERCENTAGE</option>
+          </select>
+        </div>
+
+          {/* Submission Type */}
+        <div className="col-md-4 mb-3">
+          <label htmlFor="wd-submission-type" className="form-label">Submission Type</label>
+        </div>
+        <div className="col-md-8 mb-3">
+        <div className="row-mb-3 border p-3 rounded">
+          <select className="form-control" id="wd-submission-type">
+            <option>Online</option>
+          </select>
+        
+        
+          <div>
+            <label>Online Entry Options</label><br />
+            <div className="form-check">
+              <input type="checkbox" className="form-check-input" id="wd-text-entry" />
+              <label htmlFor="wd-text-entry" className="form-check-label">Text Entry</label>
+            </div>
+            <div className="form-check">
+              <input type="checkbox" className="form-check-input" id="wd-website-url" />
+              <label htmlFor="wd-website-url" className="form-check-label">Website URL</label>
+            </div>
+            <div className="form-check">
+              <input type="checkbox" className="form-check-input" id="wd-media-recordings" />
+              <label htmlFor="wd-media-recordings" className="form-check-label">Media Recordings</label>
+            </div>
+            <div className="form-check">
+              <input type="checkbox" className="form-check-input" id="wd-student-annotation" />
+              <label htmlFor="wd-student-annotation" className="form-check-label">Student Annotation</label>
+            </div>
+            <div className="form-check">
+              <input type="checkbox" className="form-check-input" id="wd-file-upload" />
+              <label htmlFor="wd-file-upload" className="form-check-label">File Upload</label>
+              </div>
+            </div>
+          
+
+        </div>
+        
+        
+
+        </div>
+
+
+
+
+  {/* Assign, Due Date, Available From, Available Until */}
+
+  <div className="col-md-4 mb-3">
+          <label htmlFor="wd-assign" className="form-label">Assign</label>
+        </div>
+
+        <div className="col-md-8 mb-3">
+          <div className="row-mb-3 border p-3 rounded">
+          <div >
+          <label htmlFor="wd-assign-to" className="form-label"><b>Assign to</b></label>
           <input
             type="text"
+            className="form-control"
+            id="wd-assign-to"
+            value="Everyone"
+          />
+        </div>
+        <div>
+          <label htmlFor="wd-due-date" className="form-label"><b>Due</b></label>
+          <input
+            
             className="form-control"
             id="wd-due-date"
             value={assignment.dueDate}
-            readOnly
           />
         </div>
+
+        <div className="row mb-3">
         <div className="col-md-6">
-          <label htmlFor="wd-available-from" className="form-label">Available From</label>
+          <label htmlFor="wd-available-from" className="form-label"><b>Available from</b></label>
           <input
-            type="text"
+            
             className="form-control"
             id="wd-available-from"
             value={assignment.availableDate}
-            readOnly
           />
         </div>
+        <div className="col-md-6">
+          <label htmlFor="wd-available-until" className="form-label"><b>Available until</b></label>
+          <input
+            
+            className="form-control"
+            id="wd-available-until"
+            value={assignment.availableUntilDate}
+          />
+          </div>
+        </div>
+
+          </div>
+
+
+        </div>
+
+
       </div>
+
+
+      
+
+
+
+
+     
 
       {/* Buttons */}
       <div className="d-flex justify-content-end mt-3">
-        <Link to={`/Kanbas/Courses/${cid}/Assignments`} className="btn btn-secondary me-2">
-          Cancel
-        </Link>
+        <button className="btn btn-secondary me-2">Cancel</button>
         <button className="btn btn-danger">Save</button>
       </div>
     </div>
   );
-}
+} 
 
 
 
