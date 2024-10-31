@@ -8,6 +8,8 @@ import ObjectStateVariable from "./ObjectStateVariable";
 import PassingDataOnEvent from "./PassingDataOnEvent";
 import PassingFunctions from "./PassingFunctions";
 import StringStateVariables from "./StringStateVariables";
+import ReduxExamples from "./ReduxExamples";
+import ParentStateComponent from "./ParentStateComponent";
 
 export default function Lab4() {
     function sayHello() {
@@ -28,6 +30,8 @@ export default function Lab4() {
         <DateStateVariable />
         <ObjectStateVariable />
         <ArrayStateVariable />
+        <ParentStateComponent />
+        <ReduxExamples/>
         </div>
     );
   }

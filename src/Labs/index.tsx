@@ -4,10 +4,14 @@ import Lab2 from "./Lab2";
 import Lab3 from "./Lab3";
 import TOC from "./TOC";
 import Lab4 from "./Lab4";
+import store from "./store";
+import { Provider } from "react-redux";
 
 export default function Labs() {
   return (
+    <Provider store={store}>
     <div>
+    
         <h1>Jieyi Zhou</h1>
         <h1>Section 3 for CS 5610</h1>
         <h1><a href="https://github.com/JennyjieyiZ/kanbas-react-web-app-cs5610-fa24">Github</a></h1>
@@ -21,6 +25,7 @@ export default function Labs() {
         <Route path="Lab4/*" element={<Lab4 />} />
       </Routes>
     </div>
+  </Provider>
 );}
 
 
