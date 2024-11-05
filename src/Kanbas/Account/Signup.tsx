@@ -14,10 +14,5 @@ export default function Signup() {
              
       <Link  id="wd-signup-link"
              to="/Kanbas/Account/Signin">Sign in</Link>
-      {/* <input placeholder="username" /><br/>
-      <input placeholder="password" type="password" /><br/>
-      <input placeholder="verify password" type="password" /><br/>
-      <Link to="/Kanbas/Account/Profile" > Sign up </Link><br />
-      <Link to="/Kanbas/Account/Signin" >Sign in</Link> */}
     </div>
 );}

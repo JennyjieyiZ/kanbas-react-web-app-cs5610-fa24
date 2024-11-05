@@ -150,6 +150,8 @@ export default function Assignments() {
     (assignment) => assignment.course === cid
   ); // Filter assignments for the course
 
+  
+
   return (
     <div id="wd-assignments">
       <AssignmentsControls /><br /><br /><br /><br />

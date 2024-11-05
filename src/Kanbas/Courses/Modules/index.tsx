@@ -29,7 +29,7 @@ export default function Modules() {
           dispatch(addModule({ name: moduleName, course: cid }));
           setModuleName("");
         }} />
-
+<br/><br/><br/><br/>
 <ul id="wd-modules" className="list-group rounded-0">
 
   {modules

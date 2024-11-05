@@ -10,21 +10,28 @@ export default function Signin() {
   const navigate = useNavigate();
   const signin = () => {
     const user = db.users.find(
-      (u: any) => u.username === credentials.username && u.password === credentials.password);
+      (u: any) => u.username === credentials.username &&
+                  u.password === credentials.password);
     if (!user) return;
     dispatch(setCurrentUser(user));
-    navigate("/Kanbas/Dashboard");
-  };
-  return (
-    <div id="wd-signin-screen">
-      <h1>Sign in</h1>
-      <input defaultValue={credentials.username}
-             onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
-             className="form-control mb-2" placeholder="username" id="wd-username" />
-      <input defaultValue={credentials.password}
-             onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
-             className="form-control mb-2" placeholder="password" type="password" id="wd-password" />
-      <button onClick={signin} id="wd-signin-btn" className="btn btn-primary w-100" > Sign in </button>
-      <Link id="wd-signup-link" to="/Kanbas/Account/Signup"> Sign up </Link>
-    </div>
-);}
+    navigate("/Kanbas/Dashboard");};
+
+    return (
+      <div id="wd-signin-screen">
+        <h1>Sign in</h1>
+        <input defaultValue={credentials.username}
+               onChange={(e) => setCredentials({
+                 ...credentials, username: e.target.value })}
+               className="form-control mb-2" placeholder="username" />
+        <input defaultValue={credentials.password}
+               onChange={(e) => setCredentials({ ...credentials,
+                 password: e.target.value })}
+               className="form-control mb-2"
+               placeholder="password" type="password"/>
+        <button onClick={signin}
+                className="btn btn-primary w-100" > Sign in </button>
+        <Link id="wd-signup-link" to="/Kanbas/Account/Signup">
+          Sign up </Link>
+      </div>
+  );}
+  

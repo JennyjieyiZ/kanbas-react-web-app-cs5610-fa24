@@ -11,6 +11,9 @@ export default function Dashboard(
    {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
   const { enrollments } = db;
+ 
+
+  
     return (
   
     
@@ -21,6 +24,10 @@ export default function Dashboard(
           <button className="btn btn-primary float-end"
                   id="wd-add-new-course-click"
                   onClick={addNewCourse} > Add </button>
+      <button className="btn btn-warning float-end me-2"
+                onClick={updateCourse}>
+          Update
+        </button>
       </h5><br />
       <input value={course.name} className="form-control mb-2"
              onChange={(e) => setCourse({ ...course, name: e.target.value }) } />
@@ -40,6 +47,7 @@ export default function Dashboard(
                 enrollment.user === currentUser._id &&
                 enrollment.course === course._id
                ))
+      
       
           .map((course) => (
             <div className="wd-dashboard-course col" style={{ width: "300px" }}>
@@ -90,3 +98,13 @@ export default function Dashboard(
       </div>
     </div>
 );}
+
+
+
+{/* <button className="btn btn-primary float-end"
+                  id="wd-add-new-course-click"
+                  onClick={addNewCourse} > Add </button>
+      <button className="btn btn-warning float-end me-2"
+                onClick={updateCourse}>
+          Update
+        </button> */}

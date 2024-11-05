@@ -37,7 +37,7 @@ export default function Profile() {
             <input defaultValue={profile.lastName}
                    onChange={(e) => setProfile({
                      ...profile, lastName:  e.target.value })}/>
-                               <input defaultValue={profile.dob}
+             <input defaultValue={profile.dob}
                  onChange={(e) => setProfile({
                    ...profile, dob: e.target.value })} type="date"/>
           <input defaultValue={profile.email} id="wd-email"
