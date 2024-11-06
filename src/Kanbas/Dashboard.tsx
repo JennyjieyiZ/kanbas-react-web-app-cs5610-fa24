@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React from "react"; //useState
 import { useSelector } from "react-redux";
 import * as db from "./Database";
 import { Link } from "react-router-dom";
-import { enroll, unenroll } from "./enrollmentReducer"
+// import { enroll, unenroll } from "./enrollmentReducer"
 
 export default function Dashboard(
   { courses, course, setCourse, addNewCourse,
@@ -101,12 +101,3 @@ export default function Dashboard(
     </div>
 );}
 
-
-
-{/* <button className="btn btn-primary float-end"
-                  id="wd-add-new-course-click"
-                  onClick={addNewCourse} > Add </button>
-      <button className="btn btn-warning float-end me-2"
-                onClick={updateCourse}>
-          Update
-        </button> */}

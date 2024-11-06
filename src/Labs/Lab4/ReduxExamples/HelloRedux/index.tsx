@@ -1,4 +1,4 @@
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";//useDispatch
 export default function HelloRedux() {
     const { message } = useSelector(
         (state: any) => state.helloReducer);
