@@ -23,7 +23,10 @@ export default function Dashboard(
       <h1 id="wd-dashboard-title">Dashboard</h1> <hr />
 
       <h5>New Course
-          <button className="btn btn-primary float-end"
+      <button className="btn btn-primary float-end"
+                  id="wd-add-new-course-click"
+                  onClick={addNewCourse} > Enrollment </button>
+          <button className="btn btn-primary float-end me-2"
                   id="wd-add-new-course-click"
                   onClick={addNewCourse} > Add </button>
       <button className="btn btn-warning float-end me-2"
