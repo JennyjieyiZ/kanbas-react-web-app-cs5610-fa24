@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react'; //useEffect
 import { useParams, useNavigate } from 'react-router-dom';
 import assignments from '../../Database/assignments.json';
 import courses from '../../Database/courses.json';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux'; //useState
 import { addAssignment, updateAssignment } from './reducer';
 
 export default function AssignmentEditor() {
