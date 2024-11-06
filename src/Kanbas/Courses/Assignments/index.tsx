@@ -7,24 +7,20 @@ import { useParams } from "react-router-dom";
 import assignments from "../../Database/assignments.json";
 import courses from "../../Database/courses.json";
 import { deleteAssignment } from "./reducer";
-import { useDispatch,useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 
 export default function Assignments() {
-  const { cid} = useParams(); // Get courseId from the route params
+  const { cid } = useParams();
+  const dispatch = useDispatch();
+
+  // Filter assignments for the course
   const filteredAssignments = assignments.filter(
     (assignment) => assignment.course === cid
-  ); // Filter assignments for the course
-  const dispatch = useDispatch();
-  
-
-
-
-  
+  );
 
   return (
     <div id="wd-assignments">
       <AssignmentsControls /><br /><br /><br /><br />
-
       <ul id="wd-modules" className="list-group rounded-0">
         <li className="wd-module list-group-item p-0 mb-5 fs-5 border-gray">
           <div className="wd-title p-3 ps-2 bg-secondary">
@@ -59,10 +55,12 @@ export default function Assignments() {
                   </p>
                 </div>
                 <div className="d-flex align-items-center" style={{ whiteSpace: "nowrap" }}>
-                  <HomeworkControlButtons assignmentId={assignment._id}
-                  
-                  deleteAssignment={(assignmentId) => {
-          dispatch(deleteAssignment(assignmentId)) }}/>
+                  <HomeworkControlButtons
+                    assignmentId={assignment._id}
+                    deleteAssignment={(assignmentId) => {
+                      dispatch(deleteAssignment(assignmentId))
+                    }}
+                  />
                 </div>
               </li>
             ))}
@@ -71,4 +69,4 @@ export default function Assignments() {
       </ul>
     </div>
   );
-} 
+}
