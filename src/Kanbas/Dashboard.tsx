@@ -17,6 +17,21 @@ export default function Dashboard(
 
     // State to toggle between all courses and enrolled courses view
     const [showAllCourses, setShowAllCourses] = useState(false);
+
+    const handleToggleCourses = () => {
+      setShowAllCourses(!showAllCourses);
+    };
+
+      // Filter courses based on the toggle state
+  const filteredCourses = showAllCourses
+  ? courses
+  : courses.filter((course) =>
+      enrollments.some(
+        (enrollment) =>
+          enrollment.user === currentUser._id &&
+          enrollment.course === course._id
+      )
+    );
  
 
   
@@ -30,7 +45,8 @@ export default function Dashboard(
       {currentUser.role === "STUDENT" && (
           <button
             className="btn btn-primary float-end"
-            onClick={addNewCourse}
+            onClick={handleToggleCourses}
+            style={{ marginBottom: "1rem" }}
           >
             Enrollments
           </button>
@@ -49,6 +65,12 @@ export default function Dashboard(
              onChange={(e) => setCourse({ ...course, name: e.target.value }) } />
       <textarea value={course.description} className="form-control"
              onChange={(e) => setCourse({ ...course, description: e.target.value }) } />
+
+
+      <h2 id="wd-dashboard-published">
+        {showAllCourses ? "All Courses" : "Enrolled Courses"} ({filteredCourses.length})
+      </h2>
+      <hr />
 
 
 
