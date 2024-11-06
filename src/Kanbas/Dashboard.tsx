@@ -1,5 +1,5 @@
-import React from "react"; //useState
-import { useSelector } from "react-redux";
+import React,{useState} from "react"; //useState
+import { useSelector, useDispatch } from "react-redux";
 import * as db from "./Database";
 import { Link } from "react-router-dom";
 // import { enroll, unenroll } from "./enrollmentReducer"
@@ -13,6 +13,10 @@ export default function Dashboard(
    {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
   const { enrollments } = db;
+  const dispatch = useDispatch();
+
+    // State to toggle between all courses and enrolled courses view
+    const [showAllCourses, setShowAllCourses] = useState(false);
  
 
   
@@ -23,9 +27,16 @@ export default function Dashboard(
       <h1 id="wd-dashboard-title">Dashboard</h1> <hr />
 
       <h5>New Course
-      <button className="btn btn-primary float-end"
-                  id="wd-add-new-course-click"
-                  onClick={addNewCourse} > Enrollment </button>
+      {currentUser.role === "STUDENT" && (
+          <button
+            className="btn btn-primary float-end"
+            onClick={addNewCourse}
+          >
+            Enrollments
+          </button>
+        )}
+
+
           <button className="btn btn-primary float-end me-2"
                   id="wd-add-new-course-click"
                   onClick={addNewCourse} > Add </button>
