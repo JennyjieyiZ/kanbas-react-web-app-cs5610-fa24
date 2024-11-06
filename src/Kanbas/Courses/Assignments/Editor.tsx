@@ -1,41 +1,92 @@
-import React, { useState } from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import assignments from '../../Database/assignments.json';
 import courses from '../../Database/courses.json';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { useSelector, useDispatch } from 'react-redux';
+import { addAssignment, updateAssignment } from './reducer';
 
 export default function AssignmentEditor() {
-  const { cid,aid } = useParams(); // Get cid and assignmentId from the URL
-  const assignment = assignments.find(a => a._id === aid); // Find the assignment by ID
-  const course = courses.find(c => c._id === cid); 
+  const { cid, aid } = useParams(); // Get course ID and assignment ID from the URL
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
 
- 
 
-  if (!assignment || !course) {
-    return <div>Assignment or course not found</div>;
+  // Find course and assignment data
+  const course = courses.find((c) => c._id === cid);
+  const assignment = assignments.find((a) => a._id === aid);
+
+
+  // State variables to handle form fields
+  const [title, setTitle] = useState(assignment ? assignment.title : '');
+  const [description, setDescription] = useState(assignment ? assignment.description : '');
+  const [points, setPoints] = useState(assignment ? assignment.points : '');
+  const [availableDate, setAvailableDate] = useState(assignment ? assignment.availableDate : '');
+  const [dueDate, setDueDate] = useState(assignment ? assignment.dueDate : '');
+  const [availableUntilDate, setAvailableUntilDate] = useState(assignment ? assignment.availableUntilDate : '');
+
+  //other variables
+
+  if (!course) {
+    return <div>Course not found</div>;
   }
+
+  const handleSave = () => {
+    if (!assignment) {
+      // Add new assignment
+      const newAssignment = {
+        _id: `A${Date.now()}`, // Generate a unique ID
+        title,
+        course: cid,
+        description,
+        points,
+        availableDate,
+        dueDate,
+        availableUntilDate,
+      };
+      dispatch(addAssignment(newAssignment)); // Dispatch the action to add the assignment
+    } else {
+      // Update existing assignment
+      const updatedAssignment = {
+        ...assignment,
+        title,
+        description,
+        points,
+        availableDate,
+        dueDate,
+        availableUntilDate,
+      };
+      dispatch(updateAssignment(updatedAssignment)); // Dispatch the action to update the assignment
+    }
+    navigate(`/Kanbas/courses/${cid}/assignments`); // Redirect to assignments page after saving
+  };
+  
+  // Cancel function to navigate back without saving
+  const handleCancel = () => {
+    navigate(`/Kanbas/courses/${cid}/assignments`);
+  };
 
   return (
     <div id="wd-assignments-editor" className="container mt-4">
-      {/* Breadcrumb */}
-      <h2>{course.name}</h2>
+    <h2>{course.name}</h2> {/* Display course name */}
 
-      {/* Assignment Name */}
-      <div className="mb-3">
-        <label htmlFor="wd-name" className="form-label">Assignment Name</label>
-        <input
-          type="text"
-          className="form-control"
-          id="input1"
-          value={assignment.title}
-          readOnly
-        />
-      </div>
+    {/* Input for Assignment Title */}
+    <div className="mb-3">
+      <label htmlFor="wd-name" className="form-label">Assignment Name</label>
+      <input
+        type="text"
+        className="form-control"
+        id="wd-name"
+        value={title}
+        onChange={(e) => setTitle(e.target.value)} // Update title state on change
+      />
+    </div>
 
       {/* Description */}
       <div className="mb-3 col-md-12">
         <label htmlFor="wd-description" className="form-label">Description</label>
-        <div
+        <textarea
+          className="form-control"
           id="wd-description"
           style={{
             whiteSpace: 'pre-wrap',
@@ -43,11 +94,10 @@ export default function AssignmentEditor() {
             padding: '10px',
             borderRadius: '5px',
           }}
-        >
-          {assignment.title} is available online starting from {assignment.availableDate} and is due on {assignment.dueDate}.
-        </div>
+          value={description}
+          onChange={(e) => setDescription(e.target.value)}
+        />
       </div>
-
 
       {/* Points */}
       <div className="row mb-3">
@@ -59,15 +109,16 @@ export default function AssignmentEditor() {
             type="number"
             id="wd-points"
             className="form-control"
-            value={assignment.points}
-            readOnly
+            value={points}
+            onChange={(e) => setPoints(e.target.value)}
           />
         </div>
-      
+      </div>
 
-       {/* Assignment Group, Display Grade as */}
 
-       <div className="col-md-4 mb-3">
+            {/* Assignment Group, Display Grade as */}
+
+        <div className="col-md-4 mb-3">
           <label htmlFor="wd-group" className="form-label">Assignment Groups</label>
           </div>
           <div className="col-md-8 mb-3">
@@ -128,78 +179,48 @@ export default function AssignmentEditor() {
 
         </div>
 
-
-
-
-  {/* Assign, Due Date, Available From, Available Until */}
-
-  <div className="col-md-4 mb-3">
-          <label htmlFor="wd-assign" className="form-label">Assign</label>
-        </div>
-
-        <div className="col-md-8 mb-3">
-          <div className="row-mb-3 border p-3 rounded">
-          <div >
-          <label htmlFor="wd-assign-to" className="form-label"><b>Assign to</b></label>
-          <input
-            type="text"
-            className="form-control"
-            id="wd-assign-to"
-            value="Everyone"
-          />
-        </div>
-        <div>
-          <label htmlFor="wd-due-date" className="form-label"><b>Due</b></label>
-          <input
-            
-            className="form-control"
-            id="wd-due-date"
-            value={assignment.dueDate}
-          />
-        </div>
-
-        <div className="row mb-3">
-        <div className="col-md-6">
-          <label htmlFor="wd-available-from" className="form-label"><b>Available from</b></label>
-          <input
-            
-            className="form-control"
-            id="wd-available-from"
-            value={assignment.availableDate}
-          />
-        </div>
-        <div className="col-md-6">
-          <label htmlFor="wd-available-until" className="form-label"><b>Available until</b></label>
-          <input
-            
-            className="form-control"
-            id="wd-available-until"
-            value={assignment.availableUntilDate}
-          />
-          </div>
-        </div>
-
-          </div>
-
-
-        </div>
-
-
-      </div>
-
-
       
 
 
-
-
-     
+      {/* Dates */}
+      <div className="row mb-3">
+        <div className="col-md-6">
+          <label htmlFor="wd-available-from" className="form-label">Available from</label>
+          <input
+            type="text"
+            id="wd-available-from"
+            className="form-control"
+            value={availableDate}
+            onChange={(e) => setAvailableDate(e.target.value)}
+          />
+        </div>
+        <div className="col-md-6">
+          <label htmlFor="wd-due-date" className="form-label">Due Date</label>
+          <input
+            type="text"
+            id="wd-due-date"
+            className="form-control"
+            value={dueDate}
+            onChange={(e) => setDueDate(e.target.value)}
+          />
+        </div>
+        <div className="col-md-6 mt-3">
+          <label htmlFor="wd-available-until" className="form-label">Available Until</label>
+          <input
+            type="text"
+            id="wd-available-until"
+            className="form-control"
+            value={availableUntilDate}
+            onChange={(e) => setAvailableUntilDate(e.target.value)}
+          />
+        </div>
+      </div>
 
       {/* Buttons */}
-      <div className="d-flex justify-content-end mt-3">
-        <button className="btn btn-secondary me-2">Cancel</button>
-        <button className="btn btn-danger">Save</button>
+      <div className="d-flex justify-content-end">
+        <button className="btn btn-secondary me-2" onClick={handleCancel}>Cancel</button>
+        <button className="btn btn-danger" onClick={handleSave}>Save</button>
       </div>
     </div>
   );
-} 
+}
