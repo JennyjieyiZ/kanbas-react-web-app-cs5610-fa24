@@ -4,18 +4,21 @@ import AssignmentsControls from "./AssignmentsControls";
 import HomeworkControlButtons from "./HomeworkControlButtons";
 import { BsGripVertical, BsCaretDownFill, BsJournal } from "react-icons/bs";
 import { useParams } from "react-router-dom";
-import assignments from "../../Database/assignments.json";
+// import assignments from "../../Database/assignments.json";
 import courses from "../../Database/courses.json";
 import { deleteAssignment } from "./reducer";
 import { useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 
 export default function Assignments() {
   const { cid } = useParams();
   const dispatch = useDispatch();
 
+  const {assignments} = useSelector((state: any) => state.assignmentsReducer);
+
   // Filter assignments for the course
   const filteredAssignments = assignments.filter(
-    (assignment) => assignment.course === cid
+    (assignment: any) => assignment.course === cid
   );
 
   return (
@@ -31,7 +34,7 @@ export default function Assignments() {
           </div>
 
           <ul className="wd-lessons list-group rounded-0">
-            {filteredAssignments.map((assignment) => (
+            {filteredAssignments.map((assignment: any) => (
               <li
                 key={assignment._id}
                 className="wd-lesson list-group-item p-3 ps-1 d-flex align-items-center"

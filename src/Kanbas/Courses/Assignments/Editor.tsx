@@ -1,20 +1,24 @@
-import React, { useState } from 'react'; //useEffect
+import React, { useState,useEffect } from 'react'; 
 import { useParams, useNavigate } from 'react-router-dom';
-import assignments from '../../Database/assignments.json';
+// import assignments from '../../Database/assignments.json';
 import courses from '../../Database/courses.json';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { useDispatch } from 'react-redux'; //useState
+import { useDispatch, useSelector } from 'react-redux'; //useState
 import { addAssignment, updateAssignment } from './reducer';
 
+
 export default function AssignmentEditor() {
-  const { cid, aid } = useParams(); // Get course ID and assignment ID from the URL
+  const { cid, aid } = useParams(); 
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
 
   // Find course and assignment data
-  const course = courses.find((c) => c._id === cid);
-  const assignment = assignments.find((a) => a._id === aid);
+  const course = courses.find((c) => c._id === cid)
+  
+  const {assignments} = useSelector((state: any) => state.assignmentsReducer);
+
+  const assignment = assignments.find((a: any) => a._id === aid);
 
 
   // State variables to handle form fields
@@ -66,6 +70,7 @@ export default function AssignmentEditor() {
     navigate(`/Kanbas/courses/${cid}/assignments`);
   };
 
+  
   return (
     <div id="wd-assignments-editor" className="container mt-4">
     <h2>{course.name}</h2> {/* Display course name */}

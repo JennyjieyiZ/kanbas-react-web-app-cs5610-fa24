@@ -1,12 +1,6 @@
 import { useSelector } from "react-redux";
 
-import Rew from "./Rew";
-import Jkl from "./Jkl";
-import Mnb from "./Mnb";
 
-import Dsa from "./Dsa";
-import Acme from "./Acme";
-import Yyy from "./Yyy";
 
 
 
@@ -20,13 +14,7 @@ export default function Lab1() {
     return (
       <div id="wd-lab1">
         <h2>Lab 1</h2>
-        <Yyy />
-        <Acme />
-        <Dsa />
-        <Mnb d={["a"]} />
-        
-        <Jkl />
-        <Rew d={{ b: "a" }} />
+
         
         <h3>HTML Examples</h3>
         {message}
