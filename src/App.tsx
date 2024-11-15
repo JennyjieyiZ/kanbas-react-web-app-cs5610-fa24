@@ -3,6 +3,7 @@ import Kanbas from "./Kanbas";
 import { HashRouter, Route, Routes, Navigate } from "react-router-dom"
 import store from "./Kanbas/store";
 import { Provider } from "react-redux";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (

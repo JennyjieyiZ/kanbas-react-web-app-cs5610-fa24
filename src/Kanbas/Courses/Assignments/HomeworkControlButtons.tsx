@@ -2,6 +2,7 @@ import { useState } from "react";
 import { IoEllipsisVertical } from "react-icons/io5";
 import GreenCheckmark from "./GreenCheckmark";
 import { FaTrash } from "react-icons/fa";
+import { Modal, Button } from "react-bootstrap";
 
 export default function HomeworkControlButtons({
   assignmentId,
@@ -28,16 +29,29 @@ export default function HomeworkControlButtons({
   return (
     <div className="float-end">
       <GreenCheckmark />
-      <FaTrash className="text-danger me-2 mb-1" onClick={handleDeleteClick} />
+      <FaTrash
+        className="text-danger me-2 mb-1"
+        onClick={handleDeleteClick}
+        style={{ cursor: 'pointer' }}
+      />
       <IoEllipsisVertical className="fs-4" />
 
-      {showConfirm && (
-        <div className="confirm-dialog">
-          <p>Are you sure you want to delete this assignment?</p>
-          <button className="btn btn-primary" onClick={confirmDelete}>Yes</button>
-          <button className="btn btn-secondary" onClick={cancelDelete}>No</button>
-        </div>
-      )}
+      <Modal show={showConfirm} onHide={cancelDelete} centered>
+        <Modal.Header closeButton>
+          <Modal.Title>Confirm Deletion</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          Are you sure you want to delete this assignment?
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={cancelDelete}>
+            No
+          </Button>
+          <Button variant="danger" onClick={confirmDelete}>
+            Yes
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </div>
   );
 }
