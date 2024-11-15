@@ -64,6 +64,8 @@ export default function AssignmentEditor() {
     }
     navigate(`/Kanbas/courses/${cid}/assignments`); // Redirect to assignments page after saving
   };
+
+  
   
   // Cancel function to navigate back without saving
   const handleCancel = () => {
