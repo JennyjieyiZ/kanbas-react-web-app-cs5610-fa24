@@ -1,6 +1,6 @@
 import React,{useState} from "react"; //useState
 import { useSelector, useDispatch } from "react-redux";
-import * as db from "./Database";
+
 import { Link } from "react-router-dom";
 // import { enroll, unenroll } from "./enrollmentReducer"
 
@@ -12,7 +12,7 @@ export default function Dashboard(
     updateCourse: () => void; })
    {
   const { currentUser } = useSelector((state: any) => state.accountReducer);
-  const { enrollments } = db;
+
   const dispatch = useDispatch();
 
     // State to toggle between all courses and enrolled courses view
@@ -23,15 +23,15 @@ export default function Dashboard(
     };
 
       // Filter courses based on the toggle state
-  const filteredCourses = showAllCourses
-  ? courses
-  : courses.filter((course) =>
-      enrollments.some(
-        (enrollment) =>
-          enrollment.user === currentUser._id &&
-          enrollment.course === course._id
-      )
-    );
+  // const filteredCourses = showAllCourses
+  // ? courses
+  // : courses.filter((course) =>
+  //     enrollments.some(
+  //       (enrollment) =>
+  //         enrollment.user === currentUser._id &&
+  //         enrollment.course === course._id
+  //     )
+  //   );
  
 
   
@@ -68,7 +68,7 @@ export default function Dashboard(
 
 
       <h2 id="wd-dashboard-published">
-        {showAllCourses ? "All Courses" : "Enrolled Courses"} ({filteredCourses.length})
+        {showAllCourses ? "All Courses" : "Enrolled Courses"} 
       </h2>
       <hr />
 
@@ -79,12 +79,7 @@ export default function Dashboard(
       <div id="wd-dashboard-courses" className="row">
         <div className="row row-cols-1 row-cols-md-5 g-4">
           {courses
-          .filter((course) =>
-            enrollments.some(
-              (enrollment) =>
-                enrollment.user === currentUser._id &&
-                enrollment.course === course._id
-               ))
+          
       
       
           .map((course) => (

@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from 'react'; 
+import React, { useState, useEffect } from 'react'; 
 import { useParams, useNavigate } from 'react-router-dom';
 // import assignments from '../../Database/assignments.json';
 import courses from '../../Database/courses.json';
@@ -14,7 +14,7 @@ export default function AssignmentEditor() {
 
 
   // Find course and assignment data
-  const course = courses.find((c) => c._id === cid)
+  const course = courses.find((c:any) => c._id === cid)
   
   const {assignments} = useSelector((state: any) => state.assignmentsReducer);
 
