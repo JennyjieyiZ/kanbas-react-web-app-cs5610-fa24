@@ -26,6 +26,7 @@ export default function Lab5() {
       <HttpClient />
       <WorkingWithObjectsAsynchronously />
       <WorkingWithArraysAsynchronously />
+      
 
     </div>
   );
