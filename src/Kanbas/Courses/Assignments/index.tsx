@@ -1,4 +1,3 @@
-import React from "react";
 import AssignmentsControlButtons from "./AssignmentsControlButtons";
 import AssignmentsControls from "./AssignmentsControls";
 import HomeworkControlButtons from "./HomeworkControlButtons";
@@ -6,9 +5,12 @@ import { BsGripVertical, BsCaretDownFill, BsJournal } from "react-icons/bs";
 import { useParams } from "react-router-dom";
 // import assignments from "../../Database/assignments.json";
 import courses from "../../Database/courses.json";
-import { deleteAssignment } from "./reducer";
-import { useDispatch } from "react-redux";
-import { useSelector } from "react-redux";
+import { setAssignments, addAssignment, editAssignment, updateAssignment, deleteAssignment }
+  from "./reducer";
+import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import * as coursesClient from "../client";
+import * as assignmentClient from "./client";
 
 export default function Assignments() {
   const { cid } = useParams();
@@ -20,6 +22,14 @@ export default function Assignments() {
   const filteredAssignments = assignments.filter(
     (assignment: any) => assignment.course === cid
   );
+
+  const saveAssignment = async (assignment: any) => {
+    await assignmentClient.updateAssignment(assignment);
+    dispatch(updateAssignment(assignment));
+  };
+
+
+  
 
   return (
     <div id="wd-assignments">

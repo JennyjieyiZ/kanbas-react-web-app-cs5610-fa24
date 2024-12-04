@@ -1,4 +1,9 @@
 import axios from "axios";
+
+export const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER;
+export const USERS_API = `${REMOTE_SERVER}/api/users`;
+console.log(USERS_API);
+
 const axiosWithCredentials = axios.create({ withCredentials: true });
 
 
@@ -13,10 +18,9 @@ export const findMyCourses = async () => {
   };
   
 
-export const REMOTE_SERVER = process.env.REACT_APP_REMOTE_SERVER;
-export const USERS_API = `${REMOTE_SERVER}/api/users`;
 
-export const signin = async (credentials: any) => {
+
+export const signin = async (credentials: any) => { console.log(credentials);
   const response = await axiosWithCredentials.post( `${USERS_API}/signin`, credentials );
   return response.data;
 };

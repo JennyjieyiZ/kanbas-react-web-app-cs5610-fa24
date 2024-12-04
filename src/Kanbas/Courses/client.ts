@@ -37,3 +37,7 @@ export const updateCourse = async (course: any) => {
   
   
   
+
+export function createAssignmentForCourse(cid: string, newAssignment: { name: any; course: string; }) {
+  throw new Error("Function not implemented.");
+}
