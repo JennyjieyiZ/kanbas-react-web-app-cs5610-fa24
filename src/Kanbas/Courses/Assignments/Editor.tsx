@@ -72,6 +72,7 @@ export default function AssignmentEditor() {
     navigate(`/Kanbas/courses/${cid}/assignments`);
   };
 
+
   
   return (
     <div id="wd-assignments-editor" className="container mt-4">

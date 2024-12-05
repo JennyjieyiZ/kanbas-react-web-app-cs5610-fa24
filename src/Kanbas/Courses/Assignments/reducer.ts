@@ -1,62 +1,61 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { assignments } from "../../Database";
-interface Assignment {
-  _id: string;
-  title: string;
-  course: string;
-  lessons: any[];
-  editing?: boolean;
-}
-interface AssignmentState {
-  assignments: Assignment[];
-}
+import { createSlice } from "@reduxjs/toolkit";
 
-const initialState:AssignmentState = {
-  assignments: [],
+type Assignment = {
+    _id: string;
+    title: string;
+    description: string;
+    points: number;
+    dueDate: string;
+    availableDate: string;
+    notAvailableAt: string;
+    course?: string;
 };
+
+const initialState = {
+    assignments: [] as Assignment[],
+};
+
 const assignmentsSlice = createSlice({
     name: "assignments",
     initialState,
     reducers: {
+        setAssignments: (state, action) => {
+            state.assignments = action.payload;
+        },
 
-      setAssignments: (state, action: PayloadAction<Assignment[]>) => {
-        state.assignments = action.payload;
-    },  
-    
-      addAssignment: (state, { payload: assignment }) => {
-        const newAssignment: any = {
-          _id: new Date().getTime().toString(),
-          title: assignment.title,
-          description: assignment.description,
-          dueDate: assignment.dueDate,
-          course: assignment.course,
-        };
-        state.assignments = [...state.assignments, newAssignment] as any;
-      },
-      deleteAssignment: (state, action) => {
-        state.assignments = state.assignments.filter(
-          assignment => assignment._id !== action.payload
-        );
-      },
-  
-      updateAssignment: (state, { payload: assignment }) => {
-        state.assignments = state.assignments.map((a: any) =>
-          a._id === assignment._id ? assignment : a
-        ) as any;
-      },
-      markAssignmentComplete: (state, { payload: assignmentId }) => {
-        state.assignments = state.assignments.map((a: any) =>
-          a._id === assignmentId ? { ...a, completed: true } : a
-        ) as any;
-      },
-      editAssignment: (state, { payload: assignmentId }) => {
-        state.assignments = state.assignments.map((m: any) =>
-            m._id === assignmentId ? { ...m, editing: true } : m
-        ) as any;
+        addAssignment: (state, { payload: assignment }) => {
+            const newAssignment: Assignment = {
+                _id: `A${new Date().getTime().toString().slice(3)}`,
+                title: assignment.title,
+                description: assignment.description,
+                points: assignment.points,
+                dueDate: assignment.dueDate,
+                availableDate: assignment.availableDate,
+                notAvailableAt: assignment.notAvailableAt,
+                course: assignment.course,
+            };
+            state.assignments = [...state.assignments, newAssignment];
+        },
+
+        deleteAssignment: (state, { payload: assignmentId }) => {
+            state.assignments = state.assignments.filter(
+                (assignment) => assignment._id !== assignmentId
+            );
+        },
+
+        updateAssignment: (state, { payload: assignment }) => {
+            state.assignments = state.assignments.map((a) =>
+                a._id === assignment._id ? assignment : a
+            );
+        },
+
+        editAssignment: (state, { payload: assignmentId }) => {
+            state.assignments = state.assignments.map((a) =>
+                a._id === assignmentId ? { ...a, editing: true } : a
+            );
+        },
     },
-    },
-  });
-  
-  export const { setAssignments, addAssignment, deleteAssignment, updateAssignment, editAssignment, markAssignmentComplete } =
-    assignmentsSlice.actions;
-  export default assignmentsSlice.reducer;
+});
+
+export const { setAssignments, addAssignment, deleteAssignment, updateAssignment, editAssignment } = assignmentsSlice.actions;
+export default assignmentsSlice.reducer;

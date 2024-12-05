@@ -12,6 +12,17 @@ import { useState, useEffect } from "react";
 import * as coursesClient from "../client";
 import * as assignmentClient from "./client";
 
+type Assignment = {
+  _id: string;
+  title: string;
+  description: string;
+  points: number;
+  dueDate: string;
+  availableDate: string;
+  notAvailableAt: string;
+  course?: string;
+};
+
 export default function Assignments() {
   const { cid } = useParams();
   const dispatch = useDispatch();
@@ -23,10 +34,55 @@ export default function Assignments() {
     (assignment: any) => assignment.course === cid
   );
 
-  const saveAssignment = async (assignment: any) => {
-    await assignmentClient.updateAssignment(assignment);
-    dispatch(updateAssignment(assignment));
+  useEffect(() => {
+    const fetchAssignments = async () => {
+      if (!cid) return;
+      try {
+        const assignmentsData = await assignmentClient.findAssignmentsForCourse(cid);
+        dispatch(setAssignments(assignmentsData));
+      } catch (error) {
+        console.error("Error fetching assignments:", error);
+      }
+    };
+  
+    fetchAssignments();
+  }, [cid, dispatch]);
+
+
+  const handleAddAssignment = async (newAssignment: Assignment) => {
+    if (!cid) return;
+    try {
+      const createdAssignment = await assignmentClient.createAssignment(cid, newAssignment);
+      dispatch(addAssignment(createdAssignment));
+    } catch (error) {
+      console.error("Error creating assignment:", error);
+    }
   };
+
+  const handleEditAssignment = async (updatedAssignment: Assignment) => {
+    try {
+      const savedAssignment = await assignmentClient.updateAssignment(updatedAssignment);
+      dispatch(updateAssignment(savedAssignment));
+    } catch (error) {
+      console.error("Error editing assignment:", error);
+    }
+  };
+
+  useEffect(() => {
+    const fetchAssignmentDetails = async () => {
+      if (!cid || !assignments) return;
+      try {
+        const assignmentDetails = await assignmentClient.findAssignmentById(cid, assignments);
+        console.log("Assignment Details:", assignmentDetails);
+      } catch (error) {
+        console.error("Error fetching assignment details:", error);
+      }
+    };
+  
+    fetchAssignmentDetails();
+  }, [cid, assignments]);
+
+
 
 
   
@@ -68,12 +124,17 @@ export default function Assignments() {
                   </p>
                 </div>
                 <div className="d-flex align-items-center" style={{ whiteSpace: "nowrap" }}>
-                  <HomeworkControlButtons
-                    assignmentId={assignment._id}
-                    deleteAssignment={(assignmentId) => {
-                      dispatch(deleteAssignment(assignmentId))
-                    }}
-                  />
+                <HomeworkControlButtons
+  assignmentId={assignment._id}
+  deleteAssignment={async (assignmentId) => {
+    try {
+      await assignmentClient.deleteAssignment(assignmentId);
+      dispatch(deleteAssignment(assignmentId));
+    } catch (error) {
+      console.error("Error deleting assignment:", error);
+    }
+  }}
+/>
                 </div>
               </li>
             ))}

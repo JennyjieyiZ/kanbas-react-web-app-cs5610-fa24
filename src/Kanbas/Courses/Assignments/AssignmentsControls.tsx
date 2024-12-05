@@ -5,7 +5,7 @@ export default function AssignmentsControls() {
   const navigate = useNavigate();
   const { cid } = useParams(); // Get courseId from route params
 
-  const handleAddAssignment = () => {
+  const handleAddAssignment = async () => {
     navigate(`/Kanbas/Courses/${cid}/Assignments/AssignmentEditor`);
   };
 
