@@ -5,6 +5,7 @@ import courses from '../../Database/courses.json';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { useDispatch, useSelector } from 'react-redux'; //useState
 import { addAssignment, updateAssignment } from './reducer';
+import * as assignmentClient from "./client"
 
 
 export default function AssignmentEditor() {
@@ -35,7 +36,7 @@ export default function AssignmentEditor() {
     return <div>Course not found</div>;
   }
 
-  const handleSave = () => {
+  const handleSave = async () => {
     if (!assignment) {
       // Add new assignment
       const newAssignment = {
@@ -48,7 +49,8 @@ export default function AssignmentEditor() {
         dueDate,
         availableUntilDate,
       };
-      dispatch(addAssignment(newAssignment)); // Dispatch the action to add the assignment
+      const a = await assignmentClient.createAssignment(cid || "", newAssignment)
+      dispatch(addAssignment(a)); // Dispatch the action to add the assignment
     } else {
       // Update existing assignment
       const updatedAssignment = {
