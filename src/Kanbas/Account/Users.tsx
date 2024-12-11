@@ -47,7 +47,7 @@ const createUser = async () => {
       role: "STUDENT",
     });
     setUsers([...users, user]);
-  };
+  }; 
 
 return (
   <div>
